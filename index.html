@@ -1,28 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WPlace Clone</title>
-    <link rel="stylesheet" href="libs/maplibre-gl.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>mini-WPlace</title>
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="stylesheet" href="libs/maplibre-gl.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div id="map"></div>
-
-    <!-- Tombol Lock/Unlock -->
-    <button id="lockBtn">
-        <img id="lockIcon" src="assets/lock-icon.png" alt="Lock">
-    </button>
-
-    <!-- Login -->
-    <div id="loginContainer">
-        <button id="googleLogin">Login with Google</button>
-        <button id="discordLogin">Login with Discord</button>
+  <!-- Top Bar -->
+  <div id="topbar">
+    <div class="left">
+      <button id="googleBtn" class="btn">Login Google</button>
+      <span id="userInfo" class="muted">Belum login</span>
     </div>
+    <div class="right">
+      <!-- Mobile-only lock button -->
+      <button id="lockBtn" class="btn mobile-only" title="Kunci gerakan peta (mobile)">
+        <span id="lockIcon"></span>
+        <span id="lockText">Unlock</span>
+      </button>
+    </div>
+  </div>
 
-    <script src="libs/maplibre-gl.js"></script>
-    <script type="module" src="firebase.js"></script>
-    <script src="app.js"></script>
+  <!-- Map -->
+  <div id="map"></div>
+  <!-- Canvas overlay untuk pixel & preview -->
+  <canvas id="overlay"></canvas>
+
+  <!-- Palette -->
+  <div id="paletteBar" class="panel"></div>
+
+  <!-- Hint -->
+  <div id="hint" class="muted">
+    <small>Desktop: klik untuk pasang 1 pixel. Mobile: tombol Lock untuk melukis tanpa menggeser peta.</small>
+  </div>
+
+  <!-- Libs -->
+  <script src="libs/maplibre-gl.js"></script>
+
+  <!-- Firebase compat SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
+  <!-- Config + Palette + App -->
+  <script src="firebase-config.js"></script>
+  <script src="palette.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
